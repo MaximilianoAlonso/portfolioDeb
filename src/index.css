@@ -24,14 +24,16 @@ html {
 
 body {
   font-family: var(--font-family);
- 
-  color: var(--purple-dark);
+  color: #ffffff; /* Cambia el texto a blanco para un mejor contraste */
   line-height: 1.6;
-  background-image: url(https://t4.ftcdn.net/jpg/03/29/64/07/360_F_329640738_E1pDlWorkUJI2cKc4sAyVMAUcPfSHUtL.jpg);
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
-              url(https://t4.ftcdn.net/jpg/03/29/64/07/360_F_329640738_E1pDlWorkUJI2cKc4sAyVMAUcPfSHUtL.jpg) no-repeat center center / cover fixed;
-  color: #ffffff; /* Cambia el texto a blanco para un mejor contraste */}
+  min-height: 100dvh;
+  margin: 0;
 
+  /* Fondo con gradiente oscuro + imagen adaptada, centrada y sin repetir */
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+              url("https://t4.ftcdn.net/jpg/03/29/64/07/360_F_329640738_E1pDlWorkUJI2cKc4sAyVMAUcPfSHUtL.jpg") 
+              no-repeat center center / cover fixed;
+}
 /* Navbar */
 .navbar {
   position: fixed;
@@ -367,6 +369,9 @@ background-color: rgba(255, 255, 255, 0.4);
 
 /* Pantallas Medianas / Escritorio */
 @media (min-width: 768px) {
+  body {
+    background-attachment: scroll;
+  }
   .hamburger {
     display: none;
   }
