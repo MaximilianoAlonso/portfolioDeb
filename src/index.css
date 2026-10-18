@@ -367,6 +367,10 @@ background-color: rgba(255, 255, 255, 0.4);
 
 /* Pantallas Medianas / Escritorio */
 @media (min-width: 768px) {
+  body{
+     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+              url(https://t4.ftcdn.net/jpg/03/29/64/07/360_F_329640738_E1pDlWorkUJI2cKc4sAyVMAUcPfSHUtL.jpg) no-repeat center center / contain fixed;
+  }
   .hamburger {
     display: none;
   }
