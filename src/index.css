@@ -25,7 +25,7 @@ html {
 body {
   font-family: var(--font-family);
   background-color: var(--bg-primary);
-  color: var(--purple-dark);
+  color:#52157A;
   line-height: 1.6;
 }
 
