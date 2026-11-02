@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import './App.css';
 
-// Importación de las fotos de la carpeta works para evitar repeticiones y mantener ordenado
+// Foto principal del perfil (extraída de tu PDF)
+import profileImg from './assets/CV Debora Escobar.pdf'; // O la ruta correcta donde tengas la foto de tu perfil
+
+// Importación de las fotos de la carpeta works para evitar repeticiones
 import work1 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.16.jpeg';
 import work2 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.17.jpeg';
 import work3 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.18.jpeg';
@@ -31,7 +34,7 @@ function App() {
     setMenuOpen(false);
   };
 
-  // Lista de trabajos para mapear y evitar repetir código HTML
+  // Lista de trabajos para mapear sin repetir
   const trabajosList = [
     { img: work1, title: 'Corte & Barbería Degradado' },
     { img: work2, title: 'Diseño y Perfilado de Barba' },
@@ -84,8 +87,8 @@ function App() {
         <div className="hero-content">
           <div className="profile-img-container">
             <img 
-              src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&q=80&w=400" 
-              alt="Debora Escobar - Estilista Profesional" 
+              src="/src/assets/hero.png" /* O reemplaza esta ruta por la de tu imagen de perfil real */
+              alt="Debora Escobar - Barbera & Estilista Profesional" 
               className="profile-img"
             />
           </div>
@@ -194,7 +197,7 @@ function App() {
         </div>
       </section>
 
-      {/* 4. Trabajos (Galería dinámica sin repeticiones) */}
+      {/* 4. Trabajos */}
       <section id="trabajos" className="section bg-card">
         <div className="container">
           <h2 className="section-title">Trabajos</h2>
