@@ -1,6 +1,25 @@
 import React, { useState } from 'react';
 import './App.css';
 
+// Importación de las fotos de la carpeta works para evitar repeticiones y mantener ordenado
+import work1 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.16.jpeg';
+import work2 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.17.jpeg';
+import work3 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.18.jpeg';
+import work4 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.19.jpeg';
+import work5 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.20.jpeg';
+import work6 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.21.jpeg';
+import work7 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.22.jpeg';
+import work8 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.27.jpeg';
+import work9 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.28.jpeg';
+import work10 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.29.jpeg';
+import work11 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.30.jpeg';
+import work12 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.31.jpeg';
+import work13 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.32.jpeg';
+import work14 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.33.jpeg';
+import work15 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.34.jpeg';
+import work16 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.35.jpeg';
+import work17 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.36.jpeg';
+
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -11,6 +30,27 @@ function App() {
   const closeMenu = () => {
     setMenuOpen(false);
   };
+
+  // Lista de trabajos para mapear y evitar repetir código HTML
+  const trabajosList = [
+    { img: work1, title: 'Corte & Barbería Degradado' },
+    { img: work2, title: 'Diseño y Perfilado de Barba' },
+    { img: work3, title: 'Estilismo Masculino Moderno' },
+    { img: work4, title: 'Fade de Precisión' },
+    { img: work5, title: 'Colorimetría y Textura' },
+    { img: work6, title: 'Corte Clásico & Navaja' },
+    { img: work7, title: 'Texturizado Superior' },
+    { img: work8, title: 'Fade Bajo con Barba' },
+    { img: work9, title: 'Estilo Urbano' },
+    { img: work10, title: 'Diseño de Imagen' },
+    { img: work11, title: 'Corte Moderno' },
+    { img: work12, title: 'Detalle de Nuca & Fades' },
+    { img: work13, title: 'Estilismo y Acabado' },
+    { img: work14, title: 'Barbería Profesional' },
+    { img: work15, title: 'Colorimetría Capilar' },
+    { img: work16, title: 'Ondas & Estilismo' },
+    { img: work17, title: 'Trabajo Integral' },
+  ];
 
   return (
     <div className="portfolio-container">
@@ -154,35 +194,19 @@ function App() {
         </div>
       </section>
 
-      {/* 4. Trabajos */}
+      {/* 4. Trabajos (Galería dinámica sin repeticiones) */}
       <section id="trabajos" className="section bg-card">
         <div className="container">
           <h2 className="section-title">Trabajos</h2>
           <div className="gallery-grid">
-            <div className="gallery-item">
-              <img src="https://images.unsplash.com/photo-1560869713-7d0a29430803?auto=format&fit=crop&q=80&w=500" alt="Diseño de Color" />
-              <div className="gallery-overlay">
-                <span>Colorimetría</span>
+            {trabajosList.map((trabajo, index) => (
+              <div className="gallery-item" key={index}>
+                <img src={trabajo.img} alt={trabajo.title} />
+                <div className="gallery-overlay">
+                  <span>{trabajo.title}</span>
+                </div>
               </div>
-            </div>
-            <div className="gallery-item">
-              <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&q=80&w=500" alt="Balayage Gold" />
-              <div className="gallery-overlay">
-                <span>Balayage Gold</span>
-              </div>
-            </div>
-            <div className="gallery-item">
-              <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&q=80&w=500" alt="Corte Bob Moderno" />
-              <div className="gallery-overlay">
-                <span>Corte Bob Moderno</span>
-              </div>
-            </div>
-            <div className="gallery-item">
-              <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&q=80&w=500" alt="Peinado de Eventos" />
-              <div className="gallery-overlay">
-                <span>Peinado Social & Novias</span>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
