@@ -50,8 +50,8 @@ function App() {
             />
           </div>
           <h1>Debora Escobar</h1>
-          <h2>Estilista Profesional & Hair Designer</h2>
-          <p>Especialista en colorimetría, corte de vanguardia y diseño de imagen.</p>
+          <h2>Barbera & Estilista Profesional</h2>
+          <p>Más de 10 años de trayectoria transformando la imagen, con especialización en barbería de precisión, trenzas y colorimetría.</p>
           <a href="#trabajos" className="btn-primary">Ver Trabajos</a>
         </div>
       </section>
@@ -61,7 +61,7 @@ function App() {
         <div className="container">
           <h2 className="section-title">Sobre Mí</h2>
           <p className="bio-text">
-            Apasionada por la moda y la salud capilar, me dedico a transformar la imagen de cada persona resaltando su belleza única. Con una visión moderna y personalizada, me mantengo en constante actualización en las últimas tendencias y técnicas del mundo de la peluquería y el estilismo.
+            Profesional especializada en barbería y estilismo con más de una década de trayectoria en el sector. Mi enfoque combina una sólida destreza técnica en cortes, barbas, colorimetría y trenzas con una atención cálida y personalizada. Priorizo la escucha activa y el asesoramiento integral para garantizar que cada cliente experimente un servicio de excelencia, logrando resultados alineados con su identidad y estilo en un ambiente de absoluta confianza y respeto.
           </p>
         </div>
       </section>
