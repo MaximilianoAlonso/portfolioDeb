@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import './App.css';
 
-// Foto principal del perfil (extraída de tu PDF)
-import profileImg from './assets/CV Debora Escobar.pdf'; // O la ruta correcta donde tengas la foto de tu perfil
+// Imagen de perfil principal del inicio
+import profileImg from './assets/portfolio-index-image.png';
 
-// Importación de las fotos de la carpeta works para evitar repeticiones
+// Importación de las fotos de la carpeta works para la galería
 import work1 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.16.jpeg';
 import work2 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.17.jpeg';
 import work3 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.18.jpeg';
@@ -34,7 +34,7 @@ function App() {
     setMenuOpen(false);
   };
 
-  // Lista de trabajos para mapear sin repetir
+  // Lista de trabajos para mapear en la galería sin repetir
   const trabajosList = [
     { img: work1, title: 'Corte & Barbería Degradado' },
     { img: work2, title: 'Diseño y Perfilado de Barba' },
@@ -87,7 +87,7 @@ function App() {
         <div className="hero-content">
           <div className="profile-img-container">
             <img 
-              src="/src/assets/hero.png" /* O reemplaza esta ruta por la de tu imagen de perfil real */
+              src={profileImg} 
               alt="Debora Escobar - Barbera & Estilista Profesional" 
               className="profile-img"
             />
