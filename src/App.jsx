@@ -69,23 +69,87 @@ function App() {
       {/* 3. Formación */}
       <section id="formacion" className="section">
         <div className="container">
-          <h2 className="section-title">Formación</h2>
+          <h2 className="section-title">Formación Académica & Certificaciones</h2>
           <div className="cards-grid">
-            <div className="card">
-              <span className="year">2022 - 2023</span>
-              <h3>Técnica Superior en Colorimetría</h3>
-              <p>Especialización en Balayage, Babylights, decoloración consciente y corrección de color.</p>
+            
+            {/* Certificado Revlon 2019 */}
+            <div className="card card-with-img">
+              <div className="cert-img-container">
+                <img src="/assets/2f32703e-bf2b-4998-9651-d83a269a5152.jfif" alt="Certificado Técnico en Colorimetría - Revlon Professional" />
+              </div>
+              <div className="card-content">
+                <span className="year">2019</span>
+                <h3>Técnico en Colorimetría</h3>
+                <p className="institution">Revlon Professional</p>
+                <p>Especialización técnica oficial en diagnóstico capilar, fórmulas de coloración avanzada y técnicas de aclaración.</p>
+              </div>
             </div>
-            <div className="card">
-              <span className="year">2020 - 2021</span>
-              <h3>Diseño de Corte & Visagismo</h3>
-              <p>Estudio de morfología facial, arquitectura del cabello y tendencias de corte en seco y húmedo.</p>
+
+            {/* Certificado Ringo Academy 2018 */}
+            <div className="card card-with-img">
+              <div className="cert-img-container">
+                <img src="/assets/WhatsApp Image 2026-10-26 at 00.03.58 (2).jpeg" alt="Certificado Barbero Expert - Ringo Professional Academy" />
+              </div>
+              <div className="card-content">
+                <span className="year">2018</span>
+                <h3>Barbero Expert</h3>
+                <p className="institution">Ringo Professional Academy</p>
+                <p>Capacitación intensiva en técnicas de barbería moderna, perfilado de barba, corte masculino y degradados (fades).</p>
+              </div>
             </div>
-            <div className="card">
-              <span className="year">2019</span>
-              <h3>Tratamientos Capilares Avanzados</h3>
-              <p>Diagnóstico de cuero cabelludo, nutrirreconstrucción y alisados de última generación.</p>
+
+            {/* Certificado EPyECC 2017 */}
+            <div className="card card-with-img">
+              <div className="cert-img-container">
+                <img src="/assets/WhatsApp Image 2026-10-26 at 00.03.57.jpeg" alt="Certificado Curso de Color - EPyECC" />
+              </div>
+              <div className="card-content">
+                <span className="year">2017</span>
+                <h3>Curso de Color</h3>
+                <p className="institution">EPyECC (Enseñanza de Peluquería y Estilos - Claudia Cuellar)</p>
+                <p>Formación especializada en aplicación de tonos, matices, decoloración y tendencias de colorimetría capilar.</p>
+              </div>
             </div>
+
+            {/* Certificado Question 2017 */}
+            <div className="card card-with-img">
+              <div className="cert-img-container">
+                <img src="/assets/WhatsApp Image 2026-10-26 at 00.03.57 (1).jpeg" alt="Seminario Creaciones & Tendencias - Question Professional" />
+              </div>
+              <div className="card-content">
+                <span className="year">2017</span>
+                <h3>Seminario Creaciones & Tendencias</h3>
+                <p className="institution">Question Professional — Talleres Question</p>
+                <p>Seminario técnico de perfeccionamiento en tendencias de temporada, estilismo contemporáneo y técnicas de peinado.</p>
+              </div>
+            </div>
+
+            {/* Certificado In Coiffeur Academia */}
+            <div className="card card-with-img">
+              <div className="cert-img-container">
+                <img src="/assets/WhatsApp Image 2026-10-26 at 00.03.58 (1).jpeg" alt="Certificado Permanente, Color, Corte y Peinado - In Coiffeur Academia" />
+              </div>
+              <div className="card-content">
+                <span className="year">Ezeiza, Bs. As.</span>
+                <h3>Permanente, Color, Corte y Peinado</h3>
+                <p className="institution">In Coiffeur Academia (Cámara Patronos y Peinadores Sur)</p>
+                <p>Curso integral avalado institucionalmente sobre técnicas de ondulado permanente, corte estructural y armado de peinados.</p>
+              </div>
+            </div>
+
+            {/* Certificado Adela Sanz 2006 */}
+            <div className="card card-with-img">
+              <div className="cert-img-container">
+                <img src="/assets/WhatsApp Image 2026-10-26 at 00.03.58.jpeg" alt="Diploma Peluquería Integral - Adela Sanz" />
+              </div>
+              <div className="card-content">
+                <span className="year">2006</span>
+                <h3>Peluquería Integral</h3>
+                <p className="institution">Adela Sanz — Formación de Profesionales en Estética y Belleza</p>
+                <p>Diploma profesional base que acredita la formación completa en fundamentos de peluquería, salud del cabello y estilismo.</p>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
@@ -118,30 +182,6 @@ function App() {
               <div className="gallery-overlay">
                 <span>Peinado Social & Novias</span>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 5. Experiencia Laboral */}
-      <section id="experiencia" className="section">
-        <div className="container">
-          <h2 className="section-title">Experiencia Laboral</h2>
-          <div className="timeline">
-            <div className="timeline-item">
-              <span className="timeline-date">2022 - Presente</span>
-              <h3>Estilista Principal & Studio Lead</h3>
-              <p>Atención personalizada, diseño integral de imagen, colorimetría de precisión y estilismo para producciones.</p>
-            </div>
-            <div className="timeline-item">
-              <span className="timeline-date">2019 - 2022</span>
-              <h3>Especialista en Color — Salón Vanguardia</h3>
-              <p>Asesoramiento de imagen, aplicación de técnicas de aclaración y tratamientos de restauración capilar.</p>
-            </div>
-            <div className="timeline-item">
-              <span className="timeline-date">2017 - 2019</span>
-              <h3>Asistente de Estilismo & Peinado</h3>
-              <p>Preparación de clientes, lavado técnico, asistencia en cortes y aplicación de tratamientos nutricionales.</p>
             </div>
           </div>
         </div>
