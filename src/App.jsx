@@ -1,114 +1,18 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link, useParams } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
 
 // Imagen de perfil principal del inicio
-import profileImg from './assets/portfolio-index-image.png';
+import profileImg from './assets/portfolio-index-image.jpg';
 
-// --- IMPORTACIÓN DE TUS FOTOS (Agrupa aquí tus 46 fotos w1 a w46 según la categoría) ---
-import w1 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.16 (1).jpeg';
-import w2 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.16 (2).jpeg';
-// ... Puedes importar el resto de tus fotos aquí (w3 hasta w46)
+// Imágenes de las tarjetas del index
+import imgFemenino from './assets/indexCards/femenino.jpeg';
+import imgMasculino from './assets/indexCards/masculino.jpeg';
+import imgTrenzas from './assets/indexCards/trenzas.jpeg';
+import imgColor from './assets/indexCards/color.jpeg';
 
-// Base de datos de categorías con sus respectivas fotos y descripciones breves
-const categoriasTrabajos = {
-  'corte-femenino': {
-    title: 'Corte Femenino',
-    descripcion: 'Cortes estructurados, bob, capas, desmechados y diseño de estilo personalizado según la forma del rostro.',
-    fotos: [
-      { img: w1, title: 'Corte Bob Estructurado' },
-      { img: w2, title: 'Capas Largas y Texturizadas' },
-      // Agrega aquí más fotos y descripciones para corte femenino
-    ]
-  },
-  'corte-masculino': {
-    title: 'Corte Masculino',
-    descripcion: 'Especialista en fades (degradados), cortes clásicos, modernos, perfilado de navaja y diseño de barba.',
-    fotos: [
-      { img: w1, title: 'Fade Bajo con Barba Definida' },
-      { img: w2, title: 'Corte Clásico con Navaja' },
-      // Agrega aquí más fotos y descripciones para corte masculino
-    ]
-  },
-  'trenzas': {
-    title: 'Trenzas',
-    descripcion: 'Diseños de trenzas pegadas, africanas, cocidas y estilos urbanos creativos de alta duración.',
-    fotos: [
-      { img: w1, title: 'Trenzas Pegadas Urbanas' },
-      { img: w2, title: 'Diseño Creativo con 3D' },
-      // Agrega aquí más fotos y descripciones para trenzas
-    ]
-  },
-  'color': {
-    title: 'Color',
-    descripcion: 'Colorimetría avanzada, balayage, mechas, iluminación, global y tintura técnica con cuidado capilar.',
-    fotos: [
-      { img: w1, title: 'Balayage en Tonos Cálidos' },
-      { img: w2, title: 'Coloración Global Platinada' },
-      // Agrega aquí más fotos y descripciones para color
-    ]
-  }
-};
-
-// Componente para la vista detallada de cada categoría de trabajos
-function CategoriaDetalle() {
-  const { categoriaId } = useParams();
-  const categoria = categoriasTrabajos[categoriaId];
-
-  if (!categoria) {
-    return (
-      <div className="portfolio-container" style={{ textAlign: 'center', padding: '100px 20px' }}>
-        <h2>Categoría no encontrada</h2>
-        <Link to="/" className="btn-primary" style={{ marginTop: '20px', display: 'inline-block', textDecoration: 'none' }}>
-          Volver al Inicio
-        </Link>
-      </div>
-    );
-  }
-
-  return (
-    <div className="portfolio-container">
-      {/* Barra de Navegación interna */}
-      <header className="navbar">
-        <Link to="/" className="logo">Debora Escobar</Link>
-        <Link to="/" className="btn-primary" style={{ padding: '8px 16px', fontSize: '14px', textDecoration: 'none' }}>
-          ← Volver al Inicio
-        </Link>
-      </header>
-
-      <section className="section" style={{ paddingTop: '120px' }}>
-        <div className="container">
-          <h2 className="section-title">{categoria.title}</h2>
-          <p style={{ textAlign: 'center', marginBottom: '40px', color: '#aaa', maxWidth: '600px', marginInline: 'auto' }}>
-            {categoria.descripcion}
-          </p>
-
-          {/* Galería de fotos con descripción */}
-          <div className="gallery-grid">
-            {categoria.fotos.length > 0 ? (
-              categoria.fotos.map((foto, index) => (
-                <div className="gallery-item" key={index}>
-                  <img src={foto.img} alt={foto.title} />
-                  <div className="gallery-overlay">
-                    <span>{foto.title}</span>
-                  </div>
-                </div>
-              ))
-            ) : (
-              <p style={{ textAlign: 'center', gridColumn: '1 / -1', color: '#888', padding: '40px 0' }}>
-                Próximamente se cargarán las imágenes correspondientes a esta sección.
-              </p>
-            )}
-          </div>
-        </div>
-      </section>
-
-      <footer className="footer">
-        <p>© {new Date().getFullYear()} Debora Escobar — Todos los derechos reservados.</p>
-      </footer>
-    </div>
-  );
-}
+// Importamos el componente de detalle de categoría
+import CategoriaDetalle from './components/CategoriaDetalle';
 
 // Componente de la Página Principal (Home)
 function HomePage() {
@@ -122,25 +26,25 @@ function HomePage() {
       id: 'corte-femenino',
       title: 'Corte Femenino',
       description: 'Cortes estructurados, bob, capas, desmechados y diseño de estilo personalizado según la forma del rostro.',
-      img: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=800&q=80'
+      img: imgFemenino
     },
     {
       id: 'corte-masculino',
       title: 'Corte Masculino',
       description: 'Especialista en fades (degradados), cortes clásicos, modernos, perfilado de navaja y diseño de barba.',
-      img: 'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=800&q=80'
+      img: imgMasculino
     },
     {
       id: 'trenzas',
       title: 'Trenzas',
       description: 'Diseños de trenzas pegadas, africanas, cocidas y estilos urbanos creativos de alta duración.',
-      img: 'https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=800&q=80'
+      img: imgTrenzas
     },
     {
       id: 'color',
       title: 'Color',
       description: 'Colorimetría avanzada, balayage, mechas, iluminación, global y tintura técnica con cuidado capilar.',
-      img: 'https://images.unsplash.com/photo-1560869713-7d0a29430803?auto=format&fit=crop&w=800&q=80'
+      img: imgColor
     }
   ];
 
