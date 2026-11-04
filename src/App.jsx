@@ -1,116 +1,147 @@
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, Link, useParams } from 'react-router-dom';
 import './App.css';
 
 // Imagen de perfil principal del inicio
 import profileImg from './assets/portfolio-index-image.png';
 
-// Importación completa de todas las 46 fotos de la carpeta works
+// --- IMPORTACIÓN DE TUS FOTOS (Agrupa aquí tus 46 fotos w1 a w46 según la categoría) ---
 import w1 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.16 (1).jpeg';
 import w2 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.16 (2).jpeg';
-import w3 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.16.jpeg';
-import w4 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.17.jpeg';
-import w5 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.18.jpeg';
-import w6 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.19 (1).jpeg';
-import w7 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.19.jpeg';
-import w8 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.20 (1).jpeg';
-import w9 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.20.jpeg';
-import w10 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.21 (1).jpeg';
-import w11 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.21.jpeg';
-import w12 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.22.jpeg';
-import w13 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.27 (1).jpeg';
-import w14 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.27 (2).jpeg';
-import w15 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.27 (3).jpeg';
-import w16 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.27.jpeg';
-import w17 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.28 (1).jpeg';
-import w18 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.28.jpeg';
-import w19 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.29 (1).jpeg';
-import w20 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.29 (2).jpeg';
-import w21 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.29.jpeg';
-import w22 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.30 (1).jpeg';
-import w23 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.30 (2).jpeg';
-import w24 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.30.jpeg';
-import w25 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.31 (1).jpeg';
-import w26 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.31 (2).jpeg';
-import w27 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.31 (3).jpeg';
-import w28 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.31.jpeg';
-import w29 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.32 (1).jpeg';
-import w30 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.32 (2).jpeg';
-import w31 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.32 (3).jpeg';
-import w32 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.32.jpeg';
-import w33 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.33 (1).jpeg';
-import w34 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.33 (3).jpeg';
-import w35 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.33 (4).jpeg';
-import w36 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.33.jpeg';
-import w37 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.34 (1).jpeg';
-import w38 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.34 (2).jpeg';
-import w39 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.34 (3).jpeg';
-import w40 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.34 (4).jpeg';
-import w41 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.34.jpeg';
-import w42 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.35 (1).jpeg';
-import w43 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.35 (2).jpeg';
-import w44 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.35 (3).jpeg';
-import w45 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.35.jpeg';
-import w46 from './assets/works/WhatsApp Image 2026-11-02 at 17.14.36.jpeg';
+// ... Puedes importar el resto de tus fotos aquí (w3 hasta w46)
 
-function App() {
+// Base de datos de categorías con sus respectivas fotos y descripciones breves
+const categoriasTrabajos = {
+  'corte-femenino': {
+    title: 'Corte Femenino',
+    descripcion: 'Cortes estructurados, bob, capas, desmechados y diseño de estilo personalizado según la forma del rostro.',
+    fotos: [
+      { img: w1, title: 'Corte Bob Estructurado' },
+      { img: w2, title: 'Capas Largas y Texturizadas' },
+      // Agrega aquí más fotos y descripciones para corte femenino
+    ]
+  },
+  'corte-masculino': {
+    title: 'Corte Masculino',
+    descripcion: 'Especialista en fades (degradados), cortes clásicos, modernos, perfilado de navaja y diseño de barba.',
+    fotos: [
+      { img: w1, title: 'Fade Bajo con Barba Definida' },
+      { img: w2, title: 'Corte Clásico con Navaja' },
+      // Agrega aquí más fotos y descripciones para corte masculino
+    ]
+  },
+  'trenzas': {
+    title: 'Trenzas',
+    descripcion: 'Diseños de trenzas pegadas, africanas, cocidas y estilos urbanos creativos de alta duración.',
+    fotos: [
+      { img: w1, title: 'Trenzas Pegadas Urbanas' },
+      { img: w2, title: 'Diseño Creativo con 3D' },
+      // Agrega aquí más fotos y descripciones para trenzas
+    ]
+  },
+  'color': {
+    title: 'Color',
+    descripcion: 'Colorimetría avanzada, balayage, mechas, iluminación, global y tintura técnica con cuidado capilar.',
+    fotos: [
+      { img: w1, title: 'Balayage en Tonos Cálidos' },
+      { img: w2, title: 'Coloración Global Platinada' },
+      // Agrega aquí más fotos y descripciones para color
+    ]
+  }
+};
+
+// Componente para la vista detallada de cada categoría de trabajos
+function CategoriaDetalle() {
+  const { categoriaId } = useParams();
+  const categoria = categoriasTrabajos[categoriaId];
+
+  if (!categoria) {
+    return (
+      <div className="portfolio-container" style={{ textAlign: 'center', padding: '100px 20px' }}>
+        <h2>Categoría no encontrada</h2>
+        <Link to="/" className="btn-primary" style={{ marginTop: '20px', display: 'inline-block', textDecoration: 'none' }}>
+          Volver al Inicio
+        </Link>
+      </div>
+    );
+  }
+
+  return (
+    <div className="portfolio-container">
+      {/* Barra de Navegación interna */}
+      <header className="navbar">
+        <Link to="/" className="logo">Debora Escobar</Link>
+        <Link to="/" className="btn-primary" style={{ padding: '8px 16px', fontSize: '14px', textDecoration: 'none' }}>
+          ← Volver al Inicio
+        </Link>
+      </header>
+
+      <section className="section" style={{ paddingTop: '120px' }}>
+        <div className="container">
+          <h2 className="section-title">{categoria.title}</h2>
+          <p style={{ textAlign: 'center', marginBottom: '40px', color: '#aaa', maxWidth: '600px', marginInline: 'auto' }}>
+            {categoria.descripcion}
+          </p>
+
+          {/* Galería de fotos con descripción */}
+          <div className="gallery-grid">
+            {categoria.fotos.length > 0 ? (
+              categoria.fotos.map((foto, index) => (
+                <div className="gallery-item" key={index}>
+                  <img src={foto.img} alt={foto.title} />
+                  <div className="gallery-overlay">
+                    <span>{foto.title}</span>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <p style={{ textAlign: 'center', gridColumn: '1 / -1', color: '#888', padding: '40px 0' }}>
+                Próximamente se cargarán las imágenes correspondientes a esta sección.
+              </p>
+            )}
+          </div>
+        </div>
+      </section>
+
+      <footer className="footer">
+        <p>© {new Date().getFullYear()} Debora Escobar — Todos los derechos reservados.</p>
+      </footer>
+    </div>
+  );
+}
+
+// Componente de la Página Principal (Home)
+function HomePage() {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
+  const toggleMenu = () => setMenuOpen(!menuOpen);
+  const closeMenu = () => setMenuOpen(false);
 
-  const closeMenu = () => {
-    setMenuOpen(false);
-  };
-
-  // Lista con las 46 fotos mapeadas para la galería
-  const trabajosList = [
-    { img: w1, title: 'Corte & Barbería' },
-    { img: w2, title: 'Diseño de Barba' },
-    { img: w3, title: 'Estilismo Masculino' },
-    { img: w4, title: 'Fade de Precisión' },
-    { img: w5, title: 'Colorimetría y Textura' },
-    { img: w6, title: 'Corte Clásico & Navaja' },
-    { img: w7, title: 'Texturizado Superior' },
-    { img: w8, title: 'Fade Bajo con Barba' },
-    { img: w9, title: 'Estilo Urbano' },
-    { img: w10, title: 'Diseño de Imagen' },
-    { img: w11, title: 'Corte Moderno' },
-    { img: w12, title: 'Detalle de Nuca & Fades' },
-    { img: w13, title: 'Estilismo y Acabado' },
-    { img: w14, title: 'Barbería Profesional' },
-    { img: w15, title: 'Colorimetría Capilar' },
-    { img: w16, title: 'Ondas & Estilismo' },
-    { img: w17, title: 'Trabajo Integral' },
-    { img: w18, title: 'Corte & Barbería' },
-    { img: w19, title: 'Diseño de Barba' },
-    { img: w20, title: 'Estilismo Masculino' },
-    { img: w21, title: 'Fade de Precisión' },
-    { img: w22, title: 'Colorimetría y Textura' },
-    { img: w23, title: 'Corte Clásico & Navaja' },
-    { img: w24, title: 'Texturizado Superior' },
-    { img: w25, title: 'Fade Bajo con Barba' },
-    { img: w26, title: 'Estilo Urbano' },
-    { img: w27, title: 'Diseño de Imagen' },
-    { img: w28, title: 'Corte Moderno' },
-    { img: w29, title: 'Detalle de Nuca & Fades' },
-    { img: w30, title: 'Estilismo y Acabado' },
-    { img: w31, title: 'Barbería Profesional' },
-    { img: w32, title: 'Colorimetría Capilar' },
-    { img: w33, title: 'Ondas & Estilismo' },
-    { img: w34, title: 'Trabajo Integral' },
-    { img: w35, title: 'Corte & Barbería' },
-    { img: w36, title: 'Diseño de Barba' },
-    { img: w37, title: 'Estilismo Masculino' },
-    { img: w38, title: 'Fade de Precisión' },
-    { img: w39, title: 'Colorimetría y Textura' },
-    { img: w40, title: 'Corte Clásico & Navaja' },
-    { img: w41, title: 'Texturizado Superior' },
-    { img: w42, title: 'Fade Bajo con Barba' },
-    { img: w43, title: 'Estilo Urbano' },
-    { img: w44, title: 'Diseño de Imagen' },
-    { img: w45, title: 'Corte Moderno' },
-    { img: w46, title: 'Trabajo Integral' },
+  const serviciosList = [
+    {
+      id: 'corte-femenino',
+      title: 'Corte Femenino',
+      description: 'Cortes estructurados, bob, capas, desmechados y diseño de estilo personalizado según la forma del rostro.',
+      img: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=800&q=80'
+    },
+    {
+      id: 'corte-masculino',
+      title: 'Corte Masculino',
+      description: 'Especialista en fades (degradados), cortes clásicos, modernos, perfilado de navaja y diseño de barba.',
+      img: 'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=800&q=80'
+    },
+    {
+      id: 'trenzas',
+      title: 'Trenzas',
+      description: 'Diseños de trenzas pegadas, africanas, cocidas y estilos urbanos creativos de alta duración.',
+      img: 'https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=800&q=80'
+    },
+    {
+      id: 'color',
+      title: 'Color',
+      description: 'Colorimetría avanzada, balayage, mechas, iluminación, global y tintura técnica con cuidado capilar.',
+      img: 'https://images.unsplash.com/photo-1560869713-7d0a29430803?auto=format&fit=crop&w=800&q=80'
+    }
   ];
 
   return (
@@ -255,18 +286,26 @@ function App() {
         </div>
       </section>
 
-      {/* 4. Trabajos (Galería con las 46 fotos) */}
+      {/* 4. Trabajos / Servicios */}
       <section id="trabajos" className="section bg-card">
         <div className="container">
-          <h2 className="section-title">Trabajos</h2>
-          <div className="gallery-grid">
-            {trabajosList.map((trabajo, index) => (
-              <div className="gallery-item" key={index}>
-                <img src={trabajo.img} alt={trabajo.title} />
-                <div className="gallery-overlay">
-                  <span>{trabajo.title}</span>
+          <h2 className="section-title">Especialidades & Trabajos</h2>
+          <div className="cards-grid">
+            {serviciosList.map((servicio) => (
+              <Link 
+                to={`/trabajos/${servicio.id}`} 
+                className="card card-with-img" 
+                key={servicio.id}
+                style={{ textDecoration: 'none', color: 'inherit', display: 'block', cursor: 'pointer' }}
+              >
+                <div className="cert-img-container">
+                  <img src={servicio.img} alt={servicio.title} />
                 </div>
-              </div>
+                <div className="card-content">
+                  <h3>{servicio.title} ➔</h3>
+                  <p>{servicio.description}</p>
+                </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -277,6 +316,18 @@ function App() {
         <p>© {new Date().getFullYear()} Debora Escobar — Todos los derechos reservados.</p>
       </footer>
     </div>
+  );
+}
+
+// Componente principal App que envuelve las rutas
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/trabajos/:categoriaId" element={<CategoriaDetalle />} />
+      </Routes>
+    </Router>
   );
 }
 
